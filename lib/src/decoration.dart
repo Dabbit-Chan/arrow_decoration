@@ -14,6 +14,7 @@ class ArrowDecoration extends Decoration {
     this.arrowPosition = ArrowPosition.right,
     required this.arrowSize,
     this.boxShadow,
+    this.strokeMiterLimit = 4, // kept in sync with the default in paint.cc.
   });
 
   final Color lineColor;
@@ -28,6 +29,9 @@ class ArrowDecoration extends Decoration {
 
   final List<BoxShadow>? boxShadow;
 
+  /// Sometimes it is necessary to increase this value appropriately to cope with the situation of not closing the corners.
+  final double strokeMiterLimit;
+
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
     return _CustomPainter(
@@ -39,6 +43,7 @@ class ArrowDecoration extends Decoration {
       arrowSize: arrowSize,
       extra: extra,
       boxShadow: boxShadow,
+      strokeMiterLimit: strokeMiterLimit
     );
   }
 
@@ -126,6 +131,7 @@ class _CustomPainter extends BoxPainter {
     required this.arrowSize,
     required this.extra,
     required this.boxShadow,
+    required this.strokeMiterLimit,
   });
 
   Paint? linePainter;
@@ -139,6 +145,7 @@ class _CustomPainter extends BoxPainter {
   final double extra;
   final ArrowPosition arrowPosition;
   final List<BoxShadow>? boxShadow;
+  final double strokeMiterLimit;
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
@@ -146,6 +153,7 @@ class _CustomPainter extends BoxPainter {
     linePainter = Paint()
       ..color = lineColor
       ..strokeWidth = lineWidth
+      ..strokeMiterLimit = strokeMiterLimit
       ..style = PaintingStyle.stroke;
 
     bgPainter = Paint()
