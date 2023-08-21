@@ -1,10 +1,10 @@
 name: arrow_decoration
 description: A decoration that generates an arrow shape
 version: 0.0.1
-homepage:
+homepage: https://github.com/Dabbit-Chan/arrow_decoration
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=2.18.2 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
