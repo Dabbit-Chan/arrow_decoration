@@ -3,8 +3,8 @@
 A Decoration that generates an arrow shape
 
 ## Showcase
-
-<img src="https://github.com/Dabbit-Chan/arrow_decoration/blob/master/gifs/ArrowDecorationCase.gif" width=60%>
+https://raw.githubusercontent.com/Dabbit-Chan/animated_path/main/gifs/LissajousCase.gif
+<img src="https://raw.githubusercontent.com/Dabbit-Chan/arrow_decoration/master/gifs/ArrowDecorationCase.gif" width=60%>
 
 ## Getting started
 
