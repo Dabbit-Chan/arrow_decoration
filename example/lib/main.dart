@@ -32,9 +32,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Color lineColor = Colors.white;
-  Color bgColor = Colors.white;
-  double lineWidth = 1;
+  Color lineColor = Colors.green;
+  Color bgColor = Colors.pink;
+  double lineWidth = 10;
   BorderRadius borderRadius = BorderRadius.zero;
   double extra = 0;
   ArrowPosition arrowPosition = ArrowPosition.right;
@@ -56,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
             borderRadius: borderRadius,
             extra: extra,
             arrowPosition: arrowPosition,
-            arrowSize: arrowSize
+            arrowSize: arrowSize,
+            strokeMiterLimit: 9999,
           ),
           width: 200,
           height: 200,
