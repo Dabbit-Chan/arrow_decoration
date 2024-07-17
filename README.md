@@ -4,7 +4,7 @@ A Decoration that generates an arrow shape
 
 ## Showcase
 
-<img src="https://github.com/Dabbit-Chan/arrow_decoration/blob/main/gifs/ArrowDecorationCase.gif" width=60%>
+<img src="https://github.com/Dabbit-Chan/arrow_decoration/blob/master/gifs/ArrowDecorationCase.gif" width=60%>
 
 ## Getting started
 
