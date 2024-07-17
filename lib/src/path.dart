@@ -102,5 +102,6 @@ Path arrowPath({
   }
 
   path.lineTo(p1.dx, p1.dy);
+  path.close();
   return path;
 }
