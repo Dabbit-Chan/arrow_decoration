@@ -1,39 +1,32 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Animated Path
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A Decoration that generates an arrow shape
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Showcase
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+<img src="https://github.com/Dabbit-Chan/arrow_decoration/blob/main/gifs/ArrowDecorationCase.gif" width=60%>
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+`import 'package:arrow_decoration/arrow_decoration.dart';`
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Here is a minimalist example.
 
 ```dart
-const like = 'sample';
+Container(
+  width: 200,
+  height: 200,
+  decoration: ArrowDecoration(
+    bgColor: Colors.pink,
+    lineColor: Colors.green,
+    lineWidth: 10,
+    borderRadius: BorderRadius.circular(10),
+    arrowSize: const Size(50, 50),
+  ),
+)
 ```
+The library also provides `ArrowClipper` and `arrowPath()` for flexible use.
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Check [example](https://github.com/Dabbit-Chan/arrow_decoration/tree/master/example) for more.
