@@ -1,4 +1,4 @@
-# Animated Path
+# Arrow Decoration
 
 A Decoration that generates an arrow shape
 
