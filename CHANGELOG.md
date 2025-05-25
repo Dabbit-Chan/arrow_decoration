@@ -6,3 +6,7 @@
 
 * update README.md
 
+## 0.0.3
+
+* Add Gradient support
+

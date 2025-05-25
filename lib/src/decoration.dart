@@ -14,6 +14,7 @@ class ArrowDecoration extends Decoration {
     this.arrowPosition = ArrowPosition.right,
     required this.arrowSize,
     this.boxShadow,
+    this.gradient,
     this.strokeMiterLimit = 4, // kept in sync with the default in paint.cc.
   });
 
@@ -28,6 +29,7 @@ class ArrowDecoration extends Decoration {
   final ArrowPosition arrowPosition;
 
   final List<BoxShadow>? boxShadow;
+  final Gradient? gradient;
 
   /// Sometimes it is necessary to increase this value appropriately to cope with the situation of not closing the corners.
   final double strokeMiterLimit;
@@ -43,7 +45,8 @@ class ArrowDecoration extends Decoration {
       arrowSize: arrowSize,
       extra: extra,
       boxShadow: boxShadow,
-      strokeMiterLimit: strokeMiterLimit
+      gradient: gradient,
+      strokeMiterLimit: strokeMiterLimit,
     );
   }
 
@@ -56,7 +59,9 @@ class ArrowDecoration extends Decoration {
       arrowPosition: arrowPosition,
       extra: lerpDouble(null, extra, factor)!,
       arrowSize: Size.lerp(null, arrowSize, factor)!,
+      gradient: Gradient.lerp(null, gradient, factor),
       boxShadow: BoxShadow.lerpList(null, boxShadow, factor),
+      strokeMiterLimit: lerpDouble(null, strokeMiterLimit, factor)!,
     );
   }
 
@@ -117,6 +122,8 @@ class ArrowDecoration extends Decoration {
       arrowPosition: t < 0.5 ? a.arrowPosition : b.arrowPosition,
       arrowSize: size,
       boxShadow: BoxShadow.lerpList(a.boxShadow, b.boxShadow, t),
+      gradient: Gradient.lerp(a.gradient, b.gradient, t),
+      strokeMiterLimit: lerpDouble(a.strokeMiterLimit, b.strokeMiterLimit, t)!,
     );
   }
 }
@@ -131,6 +138,7 @@ class _CustomPainter extends BoxPainter {
     required this.arrowSize,
     required this.extra,
     required this.boxShadow,
+    required this.gradient,
     required this.strokeMiterLimit,
   });
 
@@ -145,6 +153,7 @@ class _CustomPainter extends BoxPainter {
   final double extra;
   final ArrowPosition arrowPosition;
   final List<BoxShadow>? boxShadow;
+  final Gradient? gradient;
   final double strokeMiterLimit;
 
   @override
@@ -158,6 +167,10 @@ class _CustomPainter extends BoxPainter {
 
     bgPainter = Paint()
       ..color = bgColor
+      ..shader = gradient?.createShader(
+        offset & configuration.size!,
+        textDirection: configuration.textDirection,
+      )
       ..style = PaintingStyle.fill;
 
     final Path path = arrowPath(
@@ -181,8 +194,7 @@ class _CustomPainter extends BoxPainter {
     }
     for (final BoxShadow boxShadow in boxShadow!) {
       final Paint paint = boxShadow.toPaint();
-      final Rect bounds =
-      rect.shift(boxShadow.offset).inflate(boxShadow.spreadRadius);
+      final Rect bounds = rect.shift(boxShadow.offset).inflate(boxShadow.spreadRadius);
       canvas.drawRect(bounds, paint);
     }
   }
